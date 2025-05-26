@@ -1,0 +1,111 @@
+<!-- Acá vamos a armar el formulario -->
+<!-- Nombre completo, Fecha de nacimiento, Experiencia
+como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h1>Casting Calls</h1>
+   <form id="nuevoForm">
+    <!-- Nombre completo -->
+    <label for="nombre" aria-placeholder="Escriba aquí">Nombre completo</label>
+    <input type="text" id="nombre">
+    <br> <br> <br>
+    <!-- Fecha de nacimiento --> 
+     <h3>Fecha de nacimiento</h3>
+     <label for="dia">Dia</label>
+     <input type="number" id="dia"/>
+     <label for="mes">Mes</label>
+     <input type="number" id="mes"/>
+     <label for="anio">Año</label>
+     <input type="number" id="anio"/>
+     <!-- Pido foto al usuario -->
+      <br> <br> <br>
+      <h3>Fotos</h3>
+     <label for="fotocara">Foto de tu cara</label>
+     <input type="file" id="foto" accept="image/*" /> 
+     <br> <br> <br>
+     <label for="fotocuerpo">Foto de tu cuerpo</label>
+     <input type="file" id="fotocuerpo" accept="image/*" />
+     <br> <br> <br>
+     <!-- Contacto email, WhatsApp -->
+     <label for="email">Email:</label>
+     <input type="email" id="email" />
+     <!-- Experiencia como actor/modelo -->
+     <br> <br> <br>
+     <h4>Contanos tu experiencia como actor o modelo.</h4>
+     <p>Por favor, completa la información correspondiente en el caso de tener
+        experiencia.
+     </p>
+     <label for="TieneExperiencia"></label>
+     <select id="TieneExperiencia">
+        <option value="2">No, no tengo experiencia</option>
+        <option value="1">Si, tengo experiencia</option>  
+      </select>
+      <br>
+      <div id="campoExp" style="display:none"> <!-- Está predeterminadamente puesto para 
+        que el usuario no tiene experiencia -->
+        <label for="exp"></label>
+        <h4>Contanos un poco de tu experiencia</h4>
+        <input type="text" id="exp" />
+        <h4>Inserte aquí un link a su contenido/portafolio</h4>
+        <label for="portafolio"></label>
+        <input type="text" id="portafolio" />
+      </div>
+     <!-- Submit -->
+     <br> <br> <br>
+     <button type="submit">Enviar</button>
+   </form>
+
+   <!-- Código de JS -->
+    <script>
+/* Display de exigir información: si el usuario tiene experiencia, el 
+    el formulario le pide que la ingrese */
+    const select_exp = document.getElementById('TieneExperiencia');
+    const Campo_exp = document.getElementById('campoExp');
+    select_exp.addEventListener('change',function(){
+        if (select_exp.value === "1") {
+            Campo_exp.style.display = "block";
+        } else {
+            Campo_exp.style.display = "none";
+        }
+    });
+
+/* Armamos un objeto de Js para guardar la info */
+    document.querySelector('#nuevoForm').addEventListener('submit',function(e){
+        e.preventDefault();
+        console.log('Submit capturado');
+        /* Empiezo a recopilar los datos del cliente. */
+        datos=["nombre", "dia","mes","anio", "foto","fotocuerpo", "email", "exp", "portafolio"];
+        obj={nombre:"",
+            dia:"",
+            mes:"",
+            anio:"",
+            foto:null,
+            fotocuerpo:null,
+            email:"",
+            exp:"",
+            portafolio:""
+        };
+
+        for (let i=0; i<datos.length;i++){
+            let id = datos[i];
+            let elemento = document.querySelector(`#${id}`)
+            /* Para los archivos de foto, usamos .files[0] en vez de .value */
+            if (elemento && elemento.type === "file") {
+                obj[id] = elemento.files[0] || null;
+            } else if (elemento) {
+                obj[id]=elemento.value;
+            }
+
+        }
+        console.log(obj);
+    });
+
+</script>
+</body>
+</html>
