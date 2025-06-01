@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Base de datos</title>
+  <style>
+    .busqueda {
+      margin-bottom: 20px;
+    }
+
+    .busqueda input {
+      padding: 8px 30px 8px 10px;
+      font-size: 16px;
+      width: 250px;
+    }
+
+    .busqueda .lupa {
+      position: relative;
+      display: inline-block;
+    }
+
+    .busqueda .lupa::before {
+      content: '🔍';
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Listado de Casting Calls</h1>
+
+  <!-- Botón de búsqueda-->
+  <div class="busqueda">
+    <input type="text" id="buscador" placeholder="Buscar por nombre..." />
+    <button id="botonBuscar" class="lupa">🔍</button>
+  </div>
+
+  <div class="filtroSexo">
+    <select id="filtroSexo">
+      <option value="sin">Todos</option>
+      <option value="mujer">Mujer</option>
+      <option value="hombre">Hombre</option>
+      <option value="noBin">No binario</option>
+      <option value="trans">Trans</option>
+      <option value="O">Otro</option>
+    </select>
+  </div>
+
+  <table id="tablaCastingCalls">
+    <thead>
+      <tr>
+        <th>Foto</th>
+        <th>Nombre</th>
+        <th>Sexo</th>
+        <th>Fecha de nacimiento</th>
+        <th>Teléfono</th>
+        <th>Etnia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Se insertan dinámicamente -->
+    </tbody>
+  </table>
+
+<script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js'
+
+  // URL de tu proyecto Supabase
+  const supabaseUrl = 'https://xgoebqksbwzwznqtkizq.supabase.co'; 
+  // API Key pública con rol anon
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhnb2VicWtzYnd6d3pucXRraXpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1Mzk2MDQsImV4cCI6MjA2NDExNTYwNH0.mvOWtLgH5Y05IRzcEPN6W9c9zfyc1PIcTo5HLLF89Uo';  
+  // Crea cliente Supabase
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
+  let castingCallsOriginal = []; // Guardamos los datos originales
+
+    async function cargarCastingCalls() {
+      const { data, error } = await supabase.from('Casting Calls').select('*')
+
+      if (error) {
+        console.error('Error al traer los datos:', error)
+        return
+      }
+
+      castingCallsOriginal = data // Guardamos todos los datos originales
+      mostrarTabla(data)
+      console.log(data);
+    }
+
+    function mostrarTabla(datos) {
+      const tabla = document.querySelector('#tablaCastingCalls tbody')
+      tabla.innerHTML = ''
+
+      datos.forEach(row => {
+        const tr = document.createElement('tr')
+        tr.innerHTML = `
+          <td><img src="${row.foto1}" alt="Foto de ${row.nombre}" width="100" style="object-fit: cover; height: 100px;" /></td>
+          <td>${row.nombre || '-'}</td>
+          <td>${row.sexo || '-'}</td>
+          <td>${row.FechaDeNac || '-'}</td>
+          <td>${row.tel || '-'}</td>
+          <td>${row.etnia || '-'}</td>
+          <td>
+            <button onclick="editarCastingCall(${row.id})">Editar</button>
+            <button onclick="eliminarCastingCall(${row.id})">Borrar</button>
+          </td>
+        `
+        tabla.appendChild(tr)
+      })
+    }
+// Función buscador de nombres con lupita
+  document.getElementById('botonBuscar').addEventListener('click', () => {
+    const filtro = document.getElementById('buscador').value.toLowerCase();
+
+    const filtrados = castingCallsOriginal.filter(row => {
+      const nombre = (row.nombre || '').toLowerCase();
+
+      if (nombre.length < filtro.length) return false;
+
+      for (let i = 0; i < filtro.length; i++) {
+        if (nombre[i] !== filtro[i]) {
+          return false;
+        }
+      }
+      return true;
+    });
+    mostrarTabla(filtrados);
+  });
+
+    // Funcion editar una línea
+    window.editarCastingCall = function (id) {
+      window.location.href = `editarCastingCall.html?id=${id}`
+    }
+
+    // Función eliminar una línea
+    window.eliminarCastingCall = async function (id) {
+      const confirmar = confirm('¿Estás seguro de que querés eliminar este casting call?')
+      if (!confirmar) return
+
+      const { error } = await supabase.from('Casting Calls').delete().eq('id', id)
+      if (error) {
+        alert('Error al borrar: ' + error.message)
+        return
+      }
+
+      alert('Eliminado correctamente')
+      cargarCastingCalls()
+    }
+
+
+
+// Función filtrar por sexo
+  document.getElementById('filtroSexo').addEventListener('change', () => {
+    const sexoSeleccionado = document.getElementById('filtroSexo').value.toLowerCase();
+    let filtrados = [];
+
+    if (sexoSeleccionado !== "sin") {
+      filtrados = castingCallsOriginal.filter(row =>
+        (row.sexo || '').toLowerCase() === sexoSeleccionado
+      );
+    } else {
+      filtrados = castingCallsOriginal; // si selecciona "sin filtro", mostramos todo
+    }
+    
+    mostrarTabla(filtrados);
+  });
+
+    // Cargar datos al iniciar
+    cargarCastingCalls()
+  </script>
+</body>
+</html>
