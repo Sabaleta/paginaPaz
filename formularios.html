@@ -4,17 +4,18 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charse    t="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script> <!-- Conecto con supabase -->
+        <link rel="stylesheet" href="/CssForms.css">
 </head>
 <body>
-   <h1>Casting Calls</h1>
    <form id="nuevoForm">
+    <h1 id="Titulo">Casting Calls</h1>
     <!-- Nombre completo -->
-    <label for="nombre" >Nombre completo</label>
-    <input type="text" id="nombre" placeholder="Escriba aquí">
+    <label for="nombre">Nombre completo</label>
+    <input type="text" id="nombre" placeholder="Escriba aquí" required>
     <br> <br> <br>
     <!-- Fecha de nacimiento --> 
      <h3>Fecha de nacimiento</h3>
@@ -23,63 +24,77 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
      <input type="number" id="dia" min="1" max="31" required />
      <label for="mes">Mes</label>
      <input type="number" id="mes" min="1" max="12" required /> 
+     <br>
      <label for="anio">Año</label>
      <input type="number" id="anio" min="1900" max="2030    " required />
      <!-- Etnia -->
      <h3>Etnia</h3>
-     <select id="etnia">
+     <select id="etnia" required>
         <option value="Blanco">Blanco/Caucácico</option>
-        <option value="Hispano">Hispano</option>
-        <option value="latino">Latinoamericano</option>
-        <option value="Afroamericano">Afroamericano</option>
+        <option value="Hispano">Hispano/Latino</option>
+        <option value="Asiatico">Asiático</option>
+        <option value="Afroamericano">Afrodescendiente</option>
         <option value="O">Otro</option>
      </select>
-     <!-- etnia opcional -->
-      <div id="EtniaDiv" style="display:none;">
+    <!-- etnia opcional -->
+     <div id="EtniaDiv" style="display:none;">
         <br> <br>
-        <label for="etniaO">¿Cuál?</label>
+        <label for="etnia">¿Cuál?</label>
         <input type="text" id="etnia0">
-      </div>
+     </div>
       <br> <br> <br>
+    <!-- Sexo -->
+     <h3>Sexo</h3>
+     <select id="sexo" required>
+        <option value="mujer">Mujer</option>
+        <option value="hombre">Hombre</option>
+        <option value="noBin">No binario</option>
+        <option value="trans">Transgénero</option>
+        <option value="O">Otro</option>
+     </select>
     <!-- Contacto email-->
      <label for="email">Email:</label>
-     <input type="email" id="email" placeholder="Escriba aquí"/>
+     <input type="email" id="email" placeholder="Escriba aquí" required/>
+     <br> <br> <br>
+    <!-- Ciudad de residencia-->
+     <label for="residencia">Ciudad de residencia</label>
+     <input type="text" id="residencia" placeholder="Tandil, Provincia de Buenos Aires" required/>
      <!-- Contacto Wpp -->
       <br> <br> <br>
-     <label for="tel">Número de WhatsApp o telefono</label>
-     <input type="text" id="tel" placeholder="1112345678"/>
+     <label for="tel">Número de WhatsApp o teléfono</label>
+     <input type="text" id="tel" placeholder="1112345678" required/>
      <!-- Experiencia como actor/modelo -->
      <br> <br> <br>
-     <h4>Contanos tu experiencia como actor o modelo.</h4>
-     <p>Por favor, completa la información correspondiente en el caso de tener
-        experiencia.
-     </p>
+     <h4>¿Tenés experiencia como actor o modelo?</h4>
+     <!-- ¿Tiene experiencia? -->
      <label for="TieneExperiencia"></label>
-     <select id="TieneExperiencia">
+     <select id="TieneExperiencia" required>
         <option value="No">No, no tengo experiencia</option>
         <option value="Si">Si, tengo experiencia</option>  
       </select>
       <br>
-      <div id="campoExp" style="display:none"> <!-- Está predeterminadamente puesto para 
+      <!-- campo experiencia -->
+      <div id="campoExp" style="display:none" required> <!-- Está predeterminadamente puesto para 
         que el usuario no tiene experiencia -->
-        <label for="exp"></label>
-        <h4>Contanos un poco de tu experiencia</h4>
-        <input type="text" id="exp" />
-        <h4>Inserte aquí un link a su contenido/portafolio</h4>
+        <h4>Insertá acá un link a tu contenido o portfolio (opcional)</h4>
         <label for="portafolio"></label>
-        <input type="text" id="portafolio" />
+        <input type="text" id="portafolio" required/>
       </div>
+      <!-- Experiencia -->
+     <label for="exp"></label>
+     <h4>Contanos todo lo que quieras sobre vos.</h4>
+     <input type="text" id="exp" required/>
      <!-- Pido fotos al usuario -->
       <br> <br> <br>
       <h3>Fotos</h3>
      <label for="fotocara">Primera foto de tu cara (obligatorio)</label>
-     <input type="file" id="foto1" accept="image/*" /> 
+     <input type="file" id="foto1" accept="image/*" required/> 
      <br> <br> <br>
      <label for="fotocara">Segunda foto de tu cara (opcional)</label>
      <input type="file" id="foto2" accept="image/*" /> 
      <br> <br> <br>
-     <label for="foto3">Primera foto de cuerpo entero (opcional)</label>
-     <input type="file" id="foto3" accept="image/*" />
+     <label for="foto3">Primera foto de cuerpo entero (obligatorio)</label>
+     <input type="file" id="foto3" accept="image/*" required/>
      <br> <br> <br>
      <label for="foto4">Segunda foto de tu cuerpo entero (opcional)</label>
      <input type="file" id="foto4" accept="image/*" />
@@ -89,7 +104,6 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
      <button type="submit">Enviar</button>
    </form>
    <p id="subiendo" style="display:none;">Enviando formulario, por favor esperá...</p>
-
    <!-- Código de JS -->
     <script>
 /* Display de exigir información: si el usuario tiene experiencia, el 
@@ -129,7 +143,7 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
         document.getElementById("subiendo").style.display = "block";
         console.log('Submit capturado');
         /* Empiezo a recopilar los datos del cliente. */
-        datos=["nombre", "dia","mes","anio","etnia","email","tel", "TieneExperiencia", "exp", "portafolio","foto1","foto2","foto3","foto4"];
+        datos=["nombre", "dia","mes","anio","etnia","email","residencia","sexo","tel", "TieneExperiencia", "exp", "portafolio","foto1","foto2","foto3","foto4"];
         obj={nombre:"",
             dia:"",
             mes:"",
@@ -224,6 +238,10 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
         }
     });
 
-</script>
+/* Función para avisar seguridad de usuario */
+        document.querySelector('#nuevoForm').addEventListener("submit", async function (e){
+            alert("Tu info está segura! Los datos personales que nos compartas son solo para esta base de datos. No vamos a compartirlos con nadie.");
+        });
+    </script>
 </body>
 </html>
