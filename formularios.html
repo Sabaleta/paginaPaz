@@ -4,7 +4,7 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charse    t="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script> <!-- Conecto con supabase -->
@@ -97,7 +97,7 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
      <label for="exp"></label>
      <h4>¡Contanos todo lo que quieras sobre vos!</h4>
      <br>
-     <input type="textarea" id="exp" required/>
+     <textarea id="exp" required></textarea>
      <!-- Submit -->
      <br>
      <button type="submit">Enviar</button>
@@ -231,16 +231,11 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
         if (error) {
         console.error('Error al insertar en Supabase:', error.message);
         } else {
-        console.log('Datos guardados correctamente:', data);
-        alert("Un segundo...");
+        alert("Gracias! Tu formulario se envió con éxito. Nos comunicaremos con vos cuando tu perfil concuerde con nuestras búsquedas");
+        document.getElementById("nuevoForm").reset();
         document.getElementById("nuevoForm").reset();
         }
     });
-
-/* Función para avisar seguridad de usuario */
-        document.querySelector('#nuevoForm').addEventListener("submit", async function (e){
-            alert("Gracias! Tu formulario se envió con éxito. Nos comunicaremos con vos cuando tu perfil concuerde con nuestras búsquedas");
-        });
     </script>
 </body>
 </html>
