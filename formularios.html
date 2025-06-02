@@ -16,19 +16,28 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
     <!-- Nombre completo -->
     <label for="nombre">Nombre completo</label>
     <input type="text" id="nombre" placeholder="Escriba aquí" required>
-    <br> <br> <br>
+    <br>
+    <!-- Contacto email-->
+     <label for="email">Email:</label>
+     <input type="email" id="email" placeholder="Escriba aquí" required/>
+     <!-- Contacto Wpp -->
+     <br>
+     <label for="tel">Número de WhatsApp o teléfono</label>
+     <input type="text" id="tel" placeholder="1112345678" required/>
+      <!-- Ciudad de residencia-->
+     <label for="residencia">Ciudad de residencia</label>
+     <input type="text" id="residencia" placeholder="Tandil, Provincia de Buenos Aires" required/>
     <!-- Fecha de nacimiento --> 
-     <h3>Fecha de nacimiento</h3>
      <!-- Pido condiciones sobre los valores -->
+     <h3>Fecha de nacimiento</h3>
      <label for="dia">Dia</label>
      <input type="number" id="dia" min="1" max="31" required />
      <label for="mes">Mes</label>
      <input type="number" id="mes" min="1" max="12" required /> 
-     <br>
      <label for="anio">Año</label>
      <input type="number" id="anio" min="1900" max="2030    " required />
      <!-- Etnia -->
-     <h3>Etnia</h3>
+     <h3>Raza/Etnia</h3>
      <select id="etnia" required>
         <option value="Blanco">Blanco/Caucácico</option>
         <option value="Hispano">Hispano/Latino</option>
@@ -36,13 +45,6 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
         <option value="Afroamericano">Afrodescendiente</option>
         <option value="O">Otro</option>
      </select>
-    <!-- etnia opcional -->
-     <div id="EtniaDiv" style="display:none;">
-        <br> <br>
-        <label for="etnia">¿Cuál?</label>
-        <input type="text" id="etnia0">
-     </div>
-      <br> <br> <br>
     <!-- Sexo -->
      <h3>Sexo</h3>
      <select id="sexo" required>
@@ -52,19 +54,31 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
         <option value="trans">Transgénero</option>
         <option value="O">Otro</option>
      </select>
-    <!-- Contacto email-->
-     <label for="email">Email:</label>
-     <input type="email" id="email" placeholder="Escriba aquí" required/>
-     <br> <br> <br>
-    <!-- Ciudad de residencia-->
-     <label for="residencia">Ciudad de residencia</label>
-     <input type="text" id="residencia" placeholder="Tandil, Provincia de Buenos Aires" required/>
-     <!-- Contacto Wpp -->
-      <br> <br> <br>
-     <label for="tel">Número de WhatsApp o teléfono</label>
-     <input type="text" id="tel" placeholder="1112345678" required/>
+    <!-- etnia opcional -->
+     <div id="EtniaDiv" style="display:none;">
+        <br>
+        <label for="etnia">¿Cuál?</label>
+        <input type="text" id="etnia0">
+     <!-- Pido fotos al usuario -->
+      <p style="display:none;">Subí cuatro fotos tuyas actualizadas donde se te vea claramente, dos retratos y dos de cuerpo entero.</p>
+      <br>
+     <h3>Fotos</h3>
+     <label for="fotocara">Primera foto de tu cara (obligatorio)</label>
+     <input type="file" id="foto1" accept="image/*" required/> 
+     <br>
+     <label for="fotocara">Segunda foto de tu cara (opcional)</label>
+     <input type="file" id="foto2" accept="image/*" /> 
+     <br>
+     <label for="foto3">Primera foto de cuerpo entero (obligatorio)</label>
+     <input type="file" id="foto3" accept="image/*" required/>
+     <br>
+     <label for="foto4">Segunda foto de tu cuerpo entero (opcional)</label>
+     <input type="file" id="foto4" accept="image/*" />
+     <br>
+     </div>
+      <br>
      <!-- Experiencia como actor/modelo -->
-     <br> <br> <br>
+     <br>
      <h4>¿Tenés experiencia como actor o modelo?</h4>
      <!-- ¿Tiene experiencia? -->
      <label for="TieneExperiencia"></label>
@@ -82,25 +96,11 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
       </div>
       <!-- Experiencia -->
      <label for="exp"></label>
-     <h4>Contanos todo lo que quieras sobre vos.</h4>
-     <input type="text" id="exp" required/>
-     <!-- Pido fotos al usuario -->
-      <br> <br> <br>
-      <h3>Fotos</h3>
-     <label for="fotocara">Primera foto de tu cara (obligatorio)</label>
-     <input type="file" id="foto1" accept="image/*" required/> 
-     <br> <br> <br>
-     <label for="fotocara">Segunda foto de tu cara (opcional)</label>
-     <input type="file" id="foto2" accept="image/*" /> 
-     <br> <br> <br>
-     <label for="foto3">Primera foto de cuerpo entero (obligatorio)</label>
-     <input type="file" id="foto3" accept="image/*" required/>
-     <br> <br> <br>
-     <label for="foto4">Segunda foto de tu cuerpo entero (opcional)</label>
-     <input type="file" id="foto4" accept="image/*" />
-     <br> <br> <br>
+     <h4>¡Contanos todo lo que quieras sobre vos!</h4>
+     <br>
+     <input type="textarea" id="exp" required/>
      <!-- Submit -->
-     <br> <br> <br>
+     <br>
      <button type="submit">Enviar</button>
    </form>
    <p id="subiendo" style="display:none;">Enviando formulario, por favor esperá...</p>
@@ -233,14 +233,14 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
         console.error('Error al insertar en Supabase:', error.message);
         } else {
         console.log('Datos guardados correctamente:', data);
-        alert("¡Formulario enviado correctamente!");
+        alert("Un segundo...");
         document.getElementById("nuevoForm").reset();
         }
     });
 
 /* Función para avisar seguridad de usuario */
         document.querySelector('#nuevoForm').addEventListener("submit", async function (e){
-            alert("Tu info está segura! Los datos personales que nos compartas son solo para esta base de datos. No vamos a compartirlos con nadie.");
+            alert("Gracias! Tu formulario se envió con éxito. Nos comunicaremos con vos cuando tu perfil concuerde con nuestras búsquedas");
         });
     </script>
 </body>
