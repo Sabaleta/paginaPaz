@@ -91,7 +91,7 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
         que el usuario no tiene experiencia -->
         <h4>Insertá acá un link a tu contenido o portfolio (opcional)</h4>
         <label for="portafolio"></label>
-        <input type="text" id="portafolio" required/>
+        <input type="text" id="portafolio" />
       </div>
       <!-- Experiencia -->
      <label for="exp"></label>
@@ -112,8 +112,10 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
     select_exp.addEventListener('change',function(){
         if (select_exp.value === "Si") {
             Campo_exp.style.display = "block";
+            document.getElementById("portafolio").setAttribute("required", "");
         } else {
             Campo_exp.style.display = "none";
+            document.getElementById("portafolio").removeAttribute("required");
         }
     });
     /* Display de exigir etnia */
