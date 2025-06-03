@@ -12,9 +12,11 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
 </head>
 <body>
    <form id="nuevoForm">
-    <h1 id="Titulo">Casting Calls</h1>
+    <h1 id="Titulo">Convertite en modelo</h1>
+    <p>Toda la información (incluyendo contenido gráfico) que aportes en este formulario será asegurada en una base de datos de acceso altamente reestringido. Tu información está asegurada.</p>
     <!-- Nombre completo -->
-    <label for="nombre">Nombre completo</label>
+    <br>
+    <label for="nombre">Nombre y apellido</label>
     <input type="text" id="nombre" placeholder="Escriba aquí" required>
     <br>
     <!-- Contacto email-->
@@ -23,35 +25,31 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
      <!-- Contacto Wpp -->
      <br>
      <label for="tel">Número de WhatsApp o teléfono</label>
-     <input type="text" id="tel" placeholder="1112345678" required/>
+     <input type="tel" id="tel" placeholder="1112345678" required/>
+     <br>
       <!-- Ciudad de residencia-->
      <label for="residencia">Ciudad de residencia</label>
      <input type="text" id="residencia" placeholder="Tandil, Provincia de Buenos Aires" required/>
     <!-- Fecha de nacimiento --> 
      <!-- Pido condiciones sobre los valores -->
-     <h3>Fecha de nacimiento</h3>
-     <label for="dia">Dia</label>
-     <input type="number" id="dia" min="1" max="31" required />
-     <label for="mes">Mes</label>
-     <input type="number" id="mes" min="1" max="12" required /> 
-     <label for="anio">Año</label>
-     <input type="number" id="anio" min="1900" max="2030    " required />
-     <!-- Etnia -->
-     <h3>Raza/Etnia</h3>
-     <select id="etnia" required>
-        <option value="Blanco">Blanco/Caucácico</option>
-        <option value="Hispano">Hispano/Latino</option>
-        <option value="Asiatico">Asiático</option>
-        <option value="Afroamericano">Afrodescendiente</option>
-        <option value="O">Otro</option>
-     </select>
+     <label for="fecha">Fecha de nacimiento</label>
+    <input type="date" id="fecha" name="fecha" value="2025-01-01">
     <!-- Sexo -->
-     <h3>Sexo</h3>
+     <label for="Sexo">Sexo</label>
      <select id="sexo" required>
         <option value="mujer">Mujer</option>
         <option value="hombre">Hombre</option>
         <option value="noBin">No binario</option>
         <option value="trans">Transgénero</option>
+        <option value="O">Otro</option>
+     </select>
+     <!-- Etnia -->
+     <label for="Raza/etnia">Raza/etnia</label>
+     <select id="etnia" required>
+        <option value="Blanco">Blanco/Caucásico</option>
+        <option value="Hispano">Hispano/Latino</option>
+        <option value="Asiatico">Asiático</option>
+        <option value="Afroamericano">Afrodescendiente</option>
         <option value="O">Otro</option>
      </select>
     <!-- etnia opcional -->
@@ -62,19 +60,18 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
      </div>
       <br>
     <!-- Pido fotos al usuario -->
-      <p style="display:none;">Subí cuatro fotos tuyas actualizadas donde se te vea claramente, dos retratos y dos de cuerpo entero.</p>
-      <br>
      <h3>Fotos</h3>
-     <label for="fotocara">Primera foto de tu cara (obligatorio)</label>
+     <p>Subí cuatro fotos tuyas actualizadas donde se te vea claramente, dos retratos y dos de cuerpo entero.</p>
+     <label for="fotocara">Retrato A</label>
      <input type="file" id="foto1" accept="image/*" required/> 
      <br>
-     <label for="fotocara">Segunda foto de tu cara (opcional)</label>
+     <label for="fotocara">Retrato B</label>
      <input type="file" id="foto2" accept="image/*" /> 
      <br>
-     <label for="foto3">Primera foto de cuerpo entero (obligatorio)</label>
+     <label for="foto3">Cuerpo entero A</label>
      <input type="file" id="foto3" accept="image/*" required/>
      <br>
-     <label for="foto4">Segunda foto de tu cuerpo entero (opcional)</label>
+     <label for="foto4">Cuerpo entero B</label>
      <input type="file" id="foto4" accept="image/*" />
      <!-- Experiencia como actor/modelo -->
      <br>
@@ -233,7 +230,7 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
         if (error) {
         console.error('Error al insertar en Supabase:', error.message);
         } else {
-        alert("Gracias! Tu formulario se envió con éxito. Nos comunicaremos con vos cuando tu perfil concuerde con nuestras búsquedas");
+        alert("Gracias! Tu formulario se envió con éxito. Nos comunicaremos con vos cuando tu perfil concuerde con nuestras búsquedas. ¡Muchas gracias!");
         document.getElementById("nuevoForm").reset();
         document.getElementById("nuevoForm").reset();
         }
