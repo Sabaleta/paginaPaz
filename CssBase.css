@@ -14,6 +14,42 @@ body {
   padding: 0;
   font-family: 'Nunito', sans-serif;
 }
+/* Jugamos un poco con la letra */
+body {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  background-color: #d6b9b9;
+  color: #000000;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+
+table {
+   width: 100%;
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+th, td {
+   width: 50%;
+   text-align: left; /* Alinea la tabla a la izquierda */
+   vertical-align: top;
+    border: 1px solid #000;
+
+}
+
+thead {
+  background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #938e8e;
+}
 
 /* Botones */
     .busqueda {

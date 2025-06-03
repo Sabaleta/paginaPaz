@@ -141,7 +141,7 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
         document.getElementById("subiendo").style.display = "block";
         console.log('Submit capturado');
         /* Empiezo a recopilar los datos del cliente. */
-        datos=["nombre", "dia","mes","anio","etnia","email","residencia","sexo","tel", "TieneExperiencia", "exp", "portafolio","foto1","foto2","foto3","foto4"];
+        datos=["nombre", "fecha","etnia","email","residencia","sexo","tel", "TieneExperiencia", "exp", "portafolio","foto1","foto2","foto3","foto4"];
         obj={nombre:"",
             dia:"",
             mes:"",
@@ -176,18 +176,8 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
           obj.etnia = etniaOInput.value || 'Otro (sin especificar)';
         }
         console.log(obj);
-
-
-        /* Tengo que transformar la fecha a formato ISO */
-        const dia = obj.dia.padStart(2,'0');
-        const mes= obj.mes.padStart(2,'0');
-        const anio=obj.anio;
-        obj.FechaDeNac= `${anio}-${mes}-${dia}`; //Tiene que tener las comillas esas raras si o si. Ese es el formato ISO.
-        //Borro los elementos del objeto inecesarios.
-        delete obj.dia;
-        delete obj.mes;
-        delete obj.anio;
-
+        obj.FechaDeNac = obj.fecha;
+        delete obj.fecha;
         /* Subo los archivos de foto al bucket fotos-casting del supabase y lo enlazo con la info en la
         base de datos */
         // Función auxiliar para subir archivos a Supabase Storage
