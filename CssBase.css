@@ -1,0 +1,41 @@
+/* Importo font nunito */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+/*  */
+  h1 {display:block;}
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Botones */
+    .busqueda {
+      margin-bottom: 20px;
+    }
+
+    .busqueda input {
+      padding: 8px 30px 8px 10px;
+      font-size: 16px;
+      width: 250px;
+    }
+
+    .busqueda .lupa {
+      position: relative;
+      display: inline-block;
+    }
+
+    .busqueda .lupa::before {
+      content: '🔍';
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }

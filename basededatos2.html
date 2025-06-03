@@ -2,33 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Base de datos</title>
-  <style>
-    .busqueda {
-      margin-bottom: 20px;
-    }
-
-    .busqueda input {
-      padding: 8px 30px 8px 10px;
-      font-size: 16px;
-      width: 250px;
-    }
-
-    .busqueda .lupa {
-      position: relative;
-      display: inline-block;
-    }
-
-    .busqueda .lupa::before {
-      content: '🔍';
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-  </style>
+  <link rel="stylesheet" href="CssBase.css">
 </head>
 <body>
   <h1>Listado de Casting Calls</h1>
@@ -53,12 +29,16 @@
   <table id="tablaCastingCalls">
     <thead>
       <tr>
-        <th>Foto</th>
+        <th>Foto cara A</th>
+        <th>Foto cuerpo A</th>
         <th>Nombre</th>
-        <th>Sexo</th>
-        <th>Fecha de nacimiento</th>
-        <th>Teléfono</th>
-        <th>Etnia</th>
+        <th>Edad</th>
+        <th>Sexoooooo</th>
+        <th>Etnia/raza</th>
+        <th>Correo electrónico</th>
+        <th>Teléfono/Celular</th>
+        <th>Residencia</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -93,19 +73,22 @@
 
     function mostrarTabla(datos) {
       const tabla = document.querySelector('#tablaCastingCalls tbody')
-      tabla.innerHTML = ''
+      tabla.innerHTML = '' // limpiamos contenido previo
 
       datos.forEach(row => {
         const tr = document.createElement('tr')
         tr.innerHTML = `
-          <td><img src="${row.foto1}" alt="Foto de ${row.nombre}" width="100" style="object-fit: cover; height: 100px;" /></td>
+          <td><img src="${row.foto1}" alt="Foto 1" width="100" style="object-fit: cover; height: 100px;" /></td>
+          <td><img src="${row.foto3}" alt="Foto 3" width="100" style="object-fit: cover; height: 100px;" /></td>
           <td>${row.nombre || '-'}</td>
+          <td>${calcularEdad(row.FechaDeNac) || '-'}</td>
           <td>${row.sexo || '-'}</td>
-          <td>${row.FechaDeNac || '-'}</td>
-          <td>${row.tel || '-'}</td>
           <td>${row.etnia || '-'}</td>
+          <td>${row.email || '-'}</td>
+          <td>${row.tel || '-'}</td>
+          <td>${row.residencia || '-'}</td>
           <td>
-            <button onclick="editarCastingCall(${row.id})">Editar</button>
+            <button onclick="verMasInformacion(${row.id})">Más información</button>
             <button onclick="eliminarCastingCall(${row.id})">Borrar</button>
           </td>
         `
@@ -171,6 +154,20 @@
 
     // Cargar datos al iniciar
     cargarCastingCalls()
+
+
+    // Función para calcular edad
+    function calcularEdad(fechaNac) {
+      if (!fechaNac) return '-'
+      const hoy = new Date()
+      const nacimiento = new Date(fechaNac)
+      let edad = hoy.getFullYear() - nacimiento.getFullYear()
+      const mes = hoy.getMonth() - nacimiento.getMonth()
+      if (mes < 0 || (mes === 0 && hoy.getDate() < nacimiento.getDate())) {
+        edad--
+      }
+      return edad
+    }
   </script>
 </body>
 </html>
