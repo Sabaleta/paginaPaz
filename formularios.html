@@ -32,7 +32,7 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
      <input type="text" id="residencia" placeholder="Tandil, Provincia de Buenos Aires" required/>
     <!-- Fecha de nacimiento --> 
      <!-- Pido condiciones sobre los valores -->
-     <label for="fecha">Fecha de nacimiento</label>
+     <label for="fecha" required>Fecha de nacimiento</label>
     <input type="date" id="fecha" name="fecha" value="2025-01-01">
     <!-- Sexo -->
      <label for="Sexo">Sexo</label>
@@ -143,11 +143,9 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
         /* Empiezo a recopilar los datos del cliente. */
         datos=["nombre", "fecha","etnia","email","residencia","sexo","tel", "TieneExperiencia", "exp", "portafolio","foto1","foto2","foto3","foto4"];
         obj={nombre:"",
-            dia:"",
-            mes:"",
-            anio:"",
             etnia:"",
             tel:"",
+            FechaDeNac:"",
             foto1:null,
             foto2:null,
             foto3:null,

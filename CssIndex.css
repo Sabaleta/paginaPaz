@@ -1,0 +1,11 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+section {
+  border-bottom: 1px solid #ddd;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
