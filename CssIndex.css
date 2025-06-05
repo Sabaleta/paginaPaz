@@ -22,3 +22,11 @@ h2 {
 #sobre-mi {
   text-align: justify;
 }
+
+.col-md-6 {
+    padding-left:100px;
+}
+
+.py-5{
+ padding-left: 40px;
+}
