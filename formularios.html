@@ -212,7 +212,7 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
         document.getElementById("subiendo").style.display = "none";
         /* Ya creado el objeto, lo inserto en la tabla de supabase*/
         const { data, error } = await cliente
-        .from('Casting Calls')
+        .from('Casting_Calls')
         .insert([obj]);
         /* Si me tira error */
         if (error) {

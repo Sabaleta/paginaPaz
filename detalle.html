@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalle del Modelo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CssDetalle.css">
+  <style>
+    img {
+      max-height: 200px;
+      margin: 10px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="nombre">Cargando...</h1>
+  <div id="info"></div>
+
+  <h3>Comentario interno</h3>
+  <textarea id="comentario" rows="5" placeholder="Escribí tu comentario..."></textarea><br>
+  <button onclick="guardarComentario()">Guardar comentario</button>
+  <p id="estado"></p>
+
+  <button onclick="window.location.href='basededatos2.html'">⬅ Volver</button>
+
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js'
+
+    const supabaseUrl = 'https://xgoebqksbwzwznqtkizq.supabase.co'
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhnb2VicWtzYnd6d3pucXRraXpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1Mzk2MDQsImV4cCI6MjA2NDExNTYwNH0.mvOWtLgH5Y05IRzcEPN6W9c9zfyc1PIcTo5HLLF89Uo'
+    const supabase = createClient(supabaseUrl, supabaseKey)
+
+    const params = new URLSearchParams(window.location.search)
+    const id = params.get('id')
+
+    let modeloActual = null
+
+    async function cargarModelo() {
+      const { data, error } = await supabase
+        .from('Casting_Calls')
+        .select('*')
+        .eq('id', id)
+        .single()
+
+      if (error || !data) {
+        document.getElementById('nombre').textContent = 'Error al cargar los datos'
+        console.error(error)
+        return
+      }
+
+      modeloActual = data
+
+      document.getElementById('nombre').textContent = data.nombre || 'Sin nombre'
+
+      document.getElementById('info').innerHTML = `
+        <p><strong>Edad:</strong> ${calcularEdad(data.FechaDeNac)}</p>
+        <p><strong>Fecha de nacimiento:</strong> ${data.FechaDeNac}</p>
+        <p><strong>Sexo:</strong> ${data.sexo}</p>
+        <p><strong>Residencia:</strong> ${data.residencia}</p>
+        <p><strong>Teléfono:</strong> ${data.tel}</p>
+        <p><strong>Email:</strong> ${data.email}</p>
+        <p><strong>Etnia:</strong> ${data.etnia}</p>
+        <p id="comentarioExistente"><strong>Comentario existente:</strong> ${data.comentario || '<em>Sin comentarios previos</em>'}</p>
+        <div>
+          <img src="${data.foto1}" alt="Foto cara A" onerror="this.style.display='none'" />
+          <img src="${data.foto2}" alt="Foto cara B" onerror="this.style.display='none'" />
+          <img src="${data.foto3}" alt="Foto cuerpo A" onerror="this.style.display='none'" />
+          <img src="${data.foto4}" alt="Foto cuerpo B" onerror="this.style.display='none'" />
+        </div>
+      `
+
+      document.getElementById('comentario').value = data.comentario || ''
+    }
+
+    async function guardarComentario() {
+      const nuevoComentario = document.getElementById('comentario').value
+
+      const { error } = await supabase
+        .from('Casting_Calls')
+        .update({ comentario: nuevoComentario })
+        .eq('id', id)
+
+      const estado = document.getElementById('estado')
+      if (error) {
+        estado.textContent = '❌ Error al guardar el comentario'
+        estado.style.color = 'red'
+      } else {
+        estado.textContent = '✅ Comentario guardado'
+        estado.style.color = 'green'
+
+        // 🔄 Actualiza el comentario en pantalla
+        const comentarioExistente = document.getElementById('comentarioExistente')
+        comentarioExistente.innerHTML = `<strong>Comentario existente:</strong> ${nuevoComentario || '<em>Sin comentarios previos</em>'}`
+      }
+    }
+
+    function calcularEdad(fechaNac) {
+      if (!fechaNac) return '-'
+      const hoy = new Date()
+      const nacimiento = new Date(fechaNac)
+      let edad = hoy.getFullYear() - nacimiento.getFullYear()
+      const mes = hoy.getMonth() - nacimiento.getMonth()
+      if (mes < 0 || (mes === 0 && hoy.getDate() < nacimiento.getDate())) edad--
+      return edad
+    }
+
+    cargarModelo()
+    window.guardarComentario = guardarComentario
+  </script>
+</body>
+</html>

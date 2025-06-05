@@ -59,7 +59,7 @@
   let castingCallsOriginal = []; // Guardamos los datos originales
 
     async function cargarCastingCalls() {
-      const { data, error } = await supabase.from('Casting Calls').select('*')
+      const { data, error } = await supabase.from('Casting_Calls').select('*')
 
       if (error) {
         console.error('Error al traer los datos:', error)
@@ -115,16 +115,17 @@
   });
 
     // Funcion editar una línea
-    window.editarCastingCall = function (id) {
-      window.location.href = `editarCastingCall.html?id=${id}`
+    window.verMasInformacion = function(id) {
+      window.location.href = `detalle.html?id=${id}`;
     }
+    
 
     // Función eliminar una línea
     window.eliminarCastingCall = async function (id) {
       const confirmar = confirm('¿Estás seguro de que querés eliminar este casting call?')
       if (!confirmar) return
 
-      const { error } = await supabase.from('Casting Calls').delete().eq('id', id)
+      const { error } = await supabase.from('Casting_Calls').delete().eq('id', id)
       if (error) {
         alert('Error al borrar: ' + error.message)
         return
