@@ -17,13 +17,14 @@
   <h1 id="nombre">Cargando...</h1>
   <div id="info"></div>
 
+  <div id="comentarioint">
   <h3>Comentario interno</h3>
   <textarea id="comentario" rows="5" placeholder="Escribí tu comentario..."></textarea><br>
   <button onclick="guardarComentario()">Guardar comentario</button>
   <p id="estado"></p>
 
   <button onclick="window.location.href='basededatos2.html'">⬅ Volver</button>
-
+  </div>
   <script type="module">
     import { createClient } from 'https://esm.sh/@supabase/supabase-js'
 

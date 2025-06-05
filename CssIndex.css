@@ -1,11 +1,24 @@
+
+
 body {
   font-family: 'Nunito', sans-serif;
+  background-color: #EBDBC7;
+
 }
 
 section {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #EBDBC7;
 }
 
 h2 {
   margin-bottom: 1rem;
+}
+
+/* Sobre mi */
+#paz4 {
+  width:448px;
+  height: 672px;
+}
+#sobre-mi {
+  text-align: justify;
 }

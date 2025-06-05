@@ -1,77 +1,115 @@
 /* Importo font nunito */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
-body {
-  font-family: 'Nunito', sans-serif;
-}
 
-/*  */
-  h1 {display:block;}
-
-/* Reset básico */
+/* Reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: 'Nunito', sans-serif;
 }
-/* Jugamos un poco con la letra */
+
 body {
-  font-family: 'Nunito', sans-serif;
-  font-size: 16px;
-  background-color: #d6b9b9;
-  color: #000000;
+  background-color: #EBDBC7;
   padding: 20px;
+  color: #333;
+  font-size: 18px;
 }
 
+/* Encabezado */
 h1 {
-  font-size: 28px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: black;
+}
+
+/* Contenedor general de filtros y búsqueda */
+.busqueda, .filtroSexo {
+  display: inline-block;
+  margin: 10px;
+}
+
+input[type="text"], select {
+  padding: 10px;
+  border: 1.8px solid #bbb;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, select:focus {
+  outline: none;
+  border-color: #DBC7AD;
+  box-shadow: 0 0 6px #DBC7AD;
+}
+
+/* Botón de búsqueda */
+button.lupa {
+  background-color: #DBC7AD;
+  color: white;
   font-weight: 700;
-  margin-bottom: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: background-color 0.3s ease;
 }
 
+button.lupa:hover {
+  background-color: #EBDBC7;
+  color: black;
+}
 
+/* Tabla */
 table {
-   width: 100%;
-    border: 1px solid #000;
-    border-collapse: collapse;
-}
-th, td {
-   width: 50%;
-   text-align: left; /* Alinea la tabla a la izquierda */
-   vertical-align: top;
-    border: 1px solid #000;
-
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 15px #EBDBC7;
+  margin-top: 20px;
 }
 
 thead {
-  background-color: #f2f2f2;
+  background-color: #DBC7AD;
+  color: white;
 }
 
-tbody tr:nth-child(even) {
-  background-color: #938e8e;
+th, td {
+  text-align: center;
+  padding: 12px 10px;
+  border-bottom: 1px solid #ddd;
 }
 
-/* Botones */
-    .busqueda {
-      margin-bottom: 20px;
-    }
+img {
+  border-radius: 4px;
+}
 
-    .busqueda input {
-      padding: 8px 30px 8px 10px;
-      font-size: 16px;
-      width: 250px;
-    }
+/* Botones dentro de la tabla */
+table button {
+  background-color: #DBC7AD;
+  color: white;
+  font-weight: 600;
+  padding: 6px 12px;
+  margin: 2px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
 
-    .busqueda .lupa {
-      position: relative;
-      display: inline-block;
-    }
+table button:hover {
+  background-color: #EBDBC7;
+  color: black;
+}
 
-    .busqueda .lupa::before {
-      content: '🔍';
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
+/* Responsive */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    font-size: 14px;
+  }
+}

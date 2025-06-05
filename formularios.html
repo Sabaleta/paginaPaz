@@ -13,7 +13,7 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
 <body>
    <form id="nuevoForm">
     <h1 id="Titulo">Convertite en modelo</h1>
-    <p>Toda la información (incluyendo contenido gráfico) que aportes en este formulario será asegurada en una base de datos de acceso altamente reestringido. Tu información está asegurada.</p>
+    <p>Toda la información (incluyendo contenido gráfico) que aportes en este formulario será asegurada en una base de datos de acceso altamente reestringida. Estas en buenas manos. ˶ᵔ ᵕ ᵔ˶</p>
     <!-- Nombre completo -->
     <br>
     <label for="nombre">Nombre y apellido</label>
@@ -26,14 +26,16 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
      <br>
      <label for="tel">Número de WhatsApp o teléfono</label>
      <input type="tel" id="tel" placeholder="1112345678" required/>
-     <br>
+     <br> <br>
       <!-- Ciudad de residencia-->
      <label for="residencia">Ciudad de residencia</label>
      <input type="text" id="residencia" placeholder="Tandil, Provincia de Buenos Aires" required/>
     <!-- Fecha de nacimiento --> 
      <!-- Pido condiciones sobre los valores -->
+     <br>
      <label for="fecha" required>Fecha de nacimiento</label>
     <input type="date" id="fecha" name="fecha" value="2025-01-01">
+    <br> <br>
     <!-- Sexo -->
      <label for="Sexo">Sexo</label>
      <select id="sexo" required>
@@ -43,6 +45,7 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
         <option value="trans">Transgénero</option>
         <option value="O">Otro</option>
      </select>
+     <br>
      <!-- Etnia -->
      <label for="Raza/etnia">Raza/etnia</label>
      <select id="etnia" required>
@@ -91,10 +94,12 @@ como actor o modelo, Foto del cuerpo completo, foto de la cara, etnia. -->
         <input type="text" id="portafolio" />
       </div>
       <!-- Experiencia -->
+     <div class="container-fluid">  
      <label for="exp"></label>
      <h4>¡Contanos todo lo que quieras sobre vos!</h4>
      <br>
      <textarea id="exp" required></textarea>
+     </div>
      <!-- Submit -->
      <br>
      <button type="submit">Enviar</button>
