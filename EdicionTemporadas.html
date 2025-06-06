@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edicion Temporadas</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+   <!-- Espacio para guardar fotos de la temporada --> 
+   <table id="TablaTemporadas">
+      <thead>
+        <th><h1>Número</h1></th>
+        <th><h1>Foto</h1></th>
+        <th><h1>Editar</h1></th>
+      </thead>
+      <!-- Body -->
+      <tbody>
+      </tbody>
+
+<script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js'
+    const supabaseUrl = 'https://xgoebqksbwzwznqtkizq.supabase.co'; /* Proyect URl */
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhnb2VicWtzYnd6d3pucXRraXpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1Mzk2MDQsImV4cCI6MjA2NDExNTYwNH0.mvOWtLgH5Y05IRzcEPN6W9c9zfyc1PIcTo5HLLF89Uo';  // 
+    const cliente = supabase.createClient(supabaseUrl, supabaseKey);
+
+    
+    /* Cargo base de datos */
+    async function cargarTemporada() { /* Análoga a cargar casting calls */
+  const { data, error } = await supabase.from('Temporada').select('*');
+
+  if (error) {
+    console.error('Supabase error:', error);
+    alert('Error al traer los datos:\n' + JSON.stringify(error, null, 2));
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    alert('No se encontraron registros o la tabla está vacía.');
+  }
+  cargarTabla(data);
+}
+/* Mostrar tabla */
+function cargarTabla(data){
+    tabla=document.getElementById('TablaTemporadas')
+    tabla.innerHTML="";
+    data.forEach(fila => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+        <td>Numero ${fila.id}</td>
+        <td><img src="${fila.foto}" alt="Foto 1" width="100" style="object-fit: cover; height: 100px;"/></td>
+          <button onclick="verMasInformacion(${fila.id})">Editar</button>
+          </td>
+          <td>
+          <button onclick="eliminarCastingCall(${fila.id})">Borrar</button>
+        </td>
+      `;
+      tabla.appendChild(tr);
+    });
+  }
+  
+/* zc */
+cargarTemporada();
+
+</script>
+</body>
+</html>
