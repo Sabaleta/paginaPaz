@@ -1,41 +1,84 @@
+/* General */
 body {
   font-family: 'Nunito', sans-serif;
   background-color: #EBDBC7;
-
 }
 
 section {
   border-bottom: 1px solid #EBDBC7;
 }
 
-h2 {
+#logo {
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+}
+
+#logoprin {
+    max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+}
+/* Reutilizables */
+.titulo-seccion {
+  padding-left: 30px;
   margin-bottom: 1rem;
 }
 
-/* Sobre mi */
-#paz4 {
-  width:448px;
-  height: 672px;
-}
-#sobre-mi {
+.texto-justificado {
   text-align: justify;
+  padding-left: 40px;
 }
 
-.col-md-6 {
-    padding-left:100px;
+.seccion-personalizada {
+  margin-top: 40px;
 }
 
-.py-5{
- padding-left: 40px;
+.imagen-lateral {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
-/* Carrousel */
-.carousel-img {
-  max-width: 50%;
+/* Foto 16 */
+#planogeneral img {
+  display: inline;
+}
+/* Galería */
+#galeria-fotos img {
+  max-width: 33%;
   height: auto;
   display: inline-block;
-  padding: 0 10px; /* Espacio entre imágenes, opcional */
+  padding: 10px;
 }
+
+.gallery {
+  padding-left: 20px;
+
+}
+
+/* Imagen específica de sobre mí */
+#paz4 {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+}
+
+/* Columna con más padding */
+.col-md-6 {
+  padding-left: 10px;
+}
+
+/* Carousel */
+.carousel-img {
+  max-width: 40%;
+  height: auto;
+  display: inline-block;
+  padding: 0 10px;
+}
+
 /* Header */
 header {
   box-sizing: 100%;
@@ -44,11 +87,28 @@ header {
   font-style: oblique;
 }
 
-/* Galeria */
-#galeria img {
-  max-width: 33%;
-  height: auto;
-  display: inline-block; 
-  padding: 10px 10px; /* Espacio entre imágenes, opcional */
+/* Background header */
+.hero-section {
+  position: relative;
+  background-color: transparent !important;
+  z-index: 1;
+}
 
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('./carpetaimg/34.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+/* Boton convertirse en modelo */
+.contenedor-flex {
+    display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
