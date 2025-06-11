@@ -42,7 +42,7 @@
           <a class="nav-link" href="#temporada">Temporada</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#banco-imagenes">Portafolio</a>
+          <a class="nav-link" href="#galeria-fotos">Portafolio</a>
         </li>
 
         <!-- Enlaces a otras páginas -->
@@ -57,7 +57,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="basededatos2.html">Base de datos</a></li>
-            <li><a class="dropdown-item" href="EdicionTemporadas.html">Editar temporada</a></li>
+            <li><a class="dropdown-item" href="#" id="editartemporadas">Editar temporada</a></li>
           </ul>
         </li>
       </ul>
@@ -76,21 +76,20 @@
   <br> <br> <br>
   <h1 class="display-4">Capturando la vida real.</h1>
   <p class="lead">Volviendo tus instantes eternos.</p>
-  <hr class="my-4">
 
-  <a class="btn btn-danger btn-lg" href="#banco-imagenes" role="button">Ver Portafolio</a>
+  <a class="btn btn-danger btn-lg" href="#galeria-fotos" role="button">Ver Portafolio</a>
   <h1><img src="./carpetaimg/logo_paz.png" alt="logo_paz" id="logoprin"></h1>
 </div>
 
 <!-- SECCIONES -->
 <!-- Header -->
- <br> <br> <br>
 <header class="container">
   <header class="container" style="background-color: transparent"></header>
 </header> 
+<br> <br> <br> <br> <br> <br>
 <hr>
 <!-- Castings -->
-<section id="temporada" class="container py-5">
+<section id="temporada" class="container py-">
   <h2>Castings</h2>
   <p>Estamos buscando...</p>
 
@@ -120,7 +119,6 @@
           <img src="./carpetaimg/castings.jpg" class="carousel-img" alt="Foto6">
         </div>
       </div>
-
     </div>
 
     <!-- Controles -->
@@ -133,13 +131,14 @@
       <span class="visually-hidden">Siguiente</span>
     </button>
   </div>
+  <br> <br>
 </section>
 
 
 
 <!-- SOBRE MÍ -->
  <!-- Sobre Mi -->
-<section id="banco-imagenes" class="seccion-personalizada container py-5">
+<section id="sobre-mi" class="seccion-personalizada container py-5">
   <h2 class="titulo-seccion px-0">Sobre mí</h2>
   <div class="row align-items-center">
     
@@ -161,6 +160,7 @@
           </p>
     </div>
   </div>
+<br> 
 </section>
 
 <!-- ancla de página: convertite en modelo -->
@@ -182,7 +182,7 @@
     </div>
   </div>
   <div class="contenedor-flex">
-    <a class="btn btn-danger btn-lg display:inline-block" href="#formulario.html" role="button">Quiero convertirme en modelo</a>
+    <a class="btn btn-danger btn-lg display:inline-block" href="formularios.html" role="button">Quiero convertirme en modelo</a>
   </div>
   </section>
 
@@ -249,6 +249,11 @@ document.addEventListener("DOMContentLoaded", function () {
         navbar.classList.remove("bg-light");
       }
     });
+
+  /* Editar temporadas (próximamente) */
+  document.getElementById("editartemporadas").addEventListener("click", () =>{
+    alert("Próximamente estaremos incorporando esta sección, gracias por la paciencia.");
+  });
 </script>
 </body>
 </html>

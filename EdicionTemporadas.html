@@ -7,60 +7,100 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body>
-   <!-- Espacio para guardar fotos de la temporada --> 
-   <table id="TablaTemporadas">
-      <thead>
-        <th><h1>Número</h1></th>
-        <th><h1>Foto</h1></th>
-        <th><h1>Editar</h1></th>
-      </thead>
-      <!-- Body -->
-      <tbody>
-      </tbody>
+<div id="tablaFotos"></div>
+<button id="guardarCambiosBtn">Guardar cambios</button>
+<p id="subiendoFotos" style="display: none;">Subiendo fotos...</p>
 
 <script type="module">
-    import { createClient } from 'https://esm.sh/@supabase/supabase-js'
-    const supabaseUrl = 'https://xgoebqksbwzwznqtkizq.supabase.co'; /* Proyect URl */
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhnb2VicWtzYnd6d3pucXRraXpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1Mzk2MDQsImV4cCI6MjA2NDExNTYwNH0.mvOWtLgH5Y05IRzcEPN6W9c9zfyc1PIcTo5HLLF89Uo';  // 
-    const cliente = supabase.createClient(supabaseUrl, supabaseKey);
+const supabaseUrl = 'https://xgoebqksbwzwznqtkizq.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhnb2VicWtzYnd6d3pucXRraXpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1Mzk2MDQsImV4cCI6MjA2NDExNTYwNH0.mvOWtLgH5Y05IRzcEPN6W9c9zfyc1PIcTo5HLLF89Uo';
+const cliente = supabase.createClient(supabaseUrl, supabaseKey);
 
-    
-    /* Cargo base de datos */
-    async function cargarTemporada() { /* Análoga a cargar casting calls */
-  const { data, error } = await supabase.from('Temporada').select('*');
+// El ID del registro que estás editando
+const registroID = 1;
+
+// 1. Al cargar la página, traer datos y mostrarlos
+document.addEventListener('DOMContentLoaded', async () => {
+  const { data, error } = await cliente
+    .from('Temporada')
+    .select('*')
+    .eq('id', registroID)
+    .single();
 
   if (error) {
-    console.error('Supabase error:', error);
-    alert('Error al traer los datos:\n' + JSON.stringify(error, null, 2));
+    console.error("Error cargando fotos:", error.message);
     return;
   }
 
-  if (!data || data.length === 0) {
-    alert('No se encontraron registros o la tabla está vacía.');
+  const container = document.getElementById("tablaFotos");
+  let html = `<table><tr>`;
+
+  for (let i = 1; i <= 6; i++) {
+    const url = data[`foto${i}`];
+    html += `
+      <td style="text-align: center;">
+        <img src="${url}" alt="foto${i}" style="width: 100px; height: auto; display:block; margin-bottom: 5px;">
+        <input type="file" id="nuevaFoto${i}" accept="image/*">
+      </td>`;
+    if (i % 3 === 0) html += `</tr><tr>`;
   }
-  cargarTabla(data);
-}
-/* Mostrar tabla */
-function cargarTabla(data){
-    tabla=document.getElementById('TablaTemporadas')
-    tabla.innerHTML="";
-    data.forEach(fila => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-        <td>Numero ${fila.id}</td>
-        <td><img src="${fila.foto}" alt="Foto 1" width="100" style="object-fit: cover; height: 100px;"/></td>
-          <button onclick="verMasInformacion(${fila.id})">Editar</button>
-          </td>
-          <td>
-          <button onclick="eliminarCastingCall(${fila.id})">Borrar</button>
-        </td>
-      `;
-      tabla.appendChild(tr);
-    });
+
+  html += `</tr></table>`;
+  container.innerHTML = html;
+});
+
+// 2. Guardar cambios (subir nuevas fotos si fueron seleccionadas)
+document.getElementById('guardarCambiosBtn').addEventListener('click', async () => {
+  document.getElementById("subiendoFotos").style.display = "block";
+
+  async function subirFoto(nombreCampo, archivo) {
+    if (!archivo) return null;
+    const nombreArchivo = `${Date.now()}-${nombreCampo}.jpg`;
+    const carpeta = "book-fotografico";
+    const { data, error } = await cliente.storage
+      .from('fotos-temporada')
+      .upload(`${carpeta}/${nombreArchivo}`, archivo, {
+        contentType: archivo.type,
+        upsert: true
+      });
+
+    if (error) {
+      console.error(`Error subiendo ${nombreCampo}:`, error.message);
+      return null;
+    }
+
+    return `${supabaseUrl}/storage/v1/object/public/fotos-temporada${carpeta}/${nombreArchivo}`;
   }
-  
-/* zc */
-cargarTemporada();
+
+  let camposActualizados = {};
+
+  for (let i = 1; i <= 6; i++) {
+    const input = document.getElementById(`nuevaFoto${i}`);
+    if (input.files[0]) {
+      const url = await subirFoto(`foto${i}`, input.files[0]);
+      if (url) camposActualizados[`foto${i}`] = url;
+    }
+  }
+
+  if (Object.keys(camposActualizados).length > 0) {
+    const { data, error } = await cliente
+      .from('Temporada')
+      .update(camposActualizados)
+      .eq('id', registroID);
+
+    if (error) {
+      console.error("Error actualizando fotos:", error.message);
+      alert("Error al guardar los cambios.");
+    } else {
+      alert("¡Fotos actualizadas con éxito!");
+      location.reload(); // recarga para mostrar nuevas fotos
+    }
+  } else {
+    alert("No seleccionaste ninguna nueva foto.");
+  }
+
+  document.getElementById("subiendoFotos").style.display = "none";
+});
 
 </script>
 </body>
