@@ -97,13 +97,40 @@ header {
   z-index: -1; /* Por debajo del contenido */
 }
 
-/* Contenedor flexible centrado verticalmente y horizontalmente */
-.contenedor-flex {
-  display: flex;
-  flex-direction: column; /* Por defecto columnas en móvil */
-  align-items: center;
-  margin-top: 20px;
+  /* Simulación simple de un placeholder móvil*/
+.placeholder-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
+
+#input-animado {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.placeholder-falso {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  color: #999;
+  animation: desplazamientoPlaceholder 10s linear infinite;
+}
+
+@keyframes desplazamientoPlaceholder {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Contenedor flexible centrado verticalmente y horizontalmente */
+
 
 /* Justifico y corrijo tamaño del texto */
 p {
@@ -157,8 +184,12 @@ font-size: 115%;
 
   /* Contenedor flexible cambia a fila y centra horizontalmente (para botón y más) */
   .contenedor-flex {
-    flex-direction: row;
-    justify-content: center;
+    display: flex;
+    flex-direction: row; /* Dos columnas lado a lado */
+    align-items: flex-start; /* Alinea el contenido de ambas al tope (mismo eje Y) */
+    justify-content: center; /* Centra horizontalmente */
+    gap: 20px; /* Espacio entre columnas */
+    margin-top: 20px;
   }
 
   /* Añade padding a la izquierda en columnas para separación en pantallas grandes */
