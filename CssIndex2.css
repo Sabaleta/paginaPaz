@@ -1,0 +1,179 @@
+/* === GENERAL === */
+
+/* Aplica la fuente Nunito y color de fondo general */
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #EBDBC7;
+}
+
+/* Cada sección tiene una línea fina de separación abajo */
+section {
+  border-bottom: 1px solid #EBDBC7;
+}
+
+/* Las imágenes nunca exceden el ancho de su contenedor, mantienen proporción */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Logo con tamaño máximo de 200px en ancho */
+#logo {
+  max-width: 200px;
+}
+
+/* Logo principal con tamaño máximo de 300px en ancho */
+#logoprin {
+  max-width: 300px;
+}
+
+/* Títulos de secciones con padding a la izquierda y margen inferior para separar */
+.titulo-seccion {
+  padding-left: 30px;
+  margin-bottom: 1rem;
+}
+
+/* Secciones con un margen superior para separar del contenido anterior */
+.seccion-personalizada {
+  margin-top: 40px;
+}
+
+/* Imágenes laterales con bordes redondeados para un look más suave */
+.imagen-lateral {
+  border-radius: 10px;
+}
+
+/* Imagen específica “paz4” con máximo ancho para que no crezca demasiado */
+#paz4 {
+  max-width: 360px;
+}
+
+/* Galería con flexbox para que las imágenes se ajusten y envuelvan */
+#galeria-fotos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Imágenes de galería con ancho máximo y padding para separación */
+#galeria-fotos img {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+}
+
+/* Imágenes del carousel con máximo ancho y padding horizontal */
+.carousel-img {
+  max-width: 40%;
+  padding: 0 10px;
+}
+
+/* Encabezado sin márgenes ni padding y con estilo oblicuo en fuente */
+header {
+  margin: 0;
+  padding: 0;
+  font-style: oblique;
+  /* box-sizing para que padding y border no aumenten el tamaño total */
+  box-sizing: border-box;
+}
+
+/* Sección hero con posición relativa para colocar fondo detrás */
+.hero-section {
+  position: relative;
+  background-color: transparent !important;
+  z-index: 1; /* Por encima de fondo */
+}
+
+/* Pseudo-elemento para poner fondo semitransparente detrás */
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0; /* Equivalente a top:0; right:0; bottom:0; left:0; */
+  background-image: url('./carpetaimg/34.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.2; /* Fondo muy tenue */
+  z-index: -1; /* Por debajo del contenido */
+}
+
+/* Contenedor flexible centrado verticalmente y horizontalmente */
+.contenedor-flex {
+  display: flex;
+  flex-direction: column; /* Por defecto columnas en móvil */
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Justifico y corrijo tamaño del texto */
+p {
+text-align: justify;
+font-size: 115%;
+}
+
+/* CELULAR */
+@media (max-width: 576px) {
+  /* Reduce padding lateral para texto justificado en móviles para no quedar muy pegado */
+  .texto-justificado {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  /* Reduce padding izquierdo en títulos para que no queden tan pegados al borde */
+  .titulo-seccion {
+    padding-left: 15px;
+  }
+
+  /* Quita padding lateral extra en columnas para que ocupen todo el ancho posible */
+  .col-md-6 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Las imágenes del carousel aumentan su tamaño máximo para ocupar más espacio */
+  .carousel-img {
+    max-width: 80%;
+    margin: auto;
+  }
+
+  /* Margen inferior extra para que la imagen #paz4 no quede muy pegada al siguiente contenido */
+  #paz4 {
+    margin-bottom: 20px;
+  }
+  #galeria-fotos img{
+    max-width: 50%;
+  }
+}
+
+
+
+/* COMPU */
+@media (min-width: 768px) {
+  /* En pantallas grandes aumenta el padding lateral del texto para más espacio */
+  .texto-justificado {
+    padding-left: 40px;
+    padding-right: 20px;
+  }
+
+  /* Contenedor flexible cambia a fila y centra horizontalmente (para botón y más) */
+  .contenedor-flex {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  /* Añade padding a la izquierda en columnas para separación en pantallas grandes */
+  .col-md-6 {
+    padding-left: 10px;
+  }
+
+  /* Mantiene tamaño máximo para imágenes de carousel */
+  .carousel-img {
+    max-width: 40%;
+  }
+
+  /* Las imágenes en galería pueden ser un poco más chicas para acomodar más en fila */
+  #galeria-fotos img {
+    max-width: 30%;
+  }
+}
+
