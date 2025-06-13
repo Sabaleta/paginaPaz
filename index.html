@@ -81,9 +81,8 @@
 <div class="hero-section py-5 text-center bg-light position-relative overflow-hidden">
   <br> <br> <br>
   <h1 class="display-4">Capturando la vida real</h1>
-  <p class="text-center">Volviendo tus instantes eternos</p>
-
-  <a class="btn btn-danger btn-lg" href="#galeria-fotos" role="button">Ver Portafolio</a>
+<br>
+  <a class="btn btn-danger btn-lg" href="#galeria-fotos" role="button">Ver Portfolio</a>
   <h1><img src="./carpetaimg/logo_paz.png" alt="logo_paz" id="logoprin"></h1>
 </div>
 
@@ -91,38 +90,60 @@
 <!-- Header -->
 <header class="container" style="background-color: transparent"></header>
 
-<!-- Castings -->
+<!-- Carrousel Castings: desktop version -->
 <section id="temporada" class="container py-5">
   <h2>Castings</h2>
   <p>Estamos buscando...</p>
 
-  <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleRide" class="carousel slide d-none d-md-block" data-bs-ride="carousel" data-bs-wrap="true">
     <div class="carousel-inner">
       
       <!-- Primer slide -->
       <div class="carousel-item active">
-        <div class="d-flex justify-content-center">
-          <img src="./carpetaimg/castings.jpg" class="carousel-img" alt="Foto1">
-          <img src="./carpetaimg/castings.jpg" class="carousel-img" alt="Foto2">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6 d-flex justify-content-center">
+            <img src="./carpetaimg/c1.jpg" class="carousel-img" alt="Foto1">
+          </div>
+          <div class="col-12 col-md-6 d-none d-md-flex justify-content-center">
+            <img src="./carpetaimg/c2.jpg" class="carousel-img" alt="Foto2">
+          </div>
         </div>
       </div>
 
       <!-- Segundo slide -->
       <div class="carousel-item">
-        <div class="d-flex justify-content-center">
-          <img src="https://placehold.co/646x862" class="carousel-img" alt="Foto3">
-          <img src="https://placehold.co/646x862" class="carousel-img" alt="Foto4">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6 d-flex justify-content-center">
+            <img src="./carpetaimg/c3.jpg" class="carousel-img" alt="Foto3">
+          </div>
+          <div class="col-12 col-md-6 d-none d-md-flex justify-content-center">
+            <img src="./carpetaimg/c4.jpg" class="carousel-img" alt="Foto4">
+          </div>
         </div>
       </div>
 
       <!-- Tercer slide -->
       <div class="carousel-item">
-        <div class="d-flex justify-content-center">
-          <img src="./carpetaimg/castings.jpg" class="carousel-img" alt="Foto5">
-          <img src="./carpetaimg/castings.jpg" class="carousel-img" alt="Foto6">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6 d-flex justify-content-center">
+            <img src="./carpetaimg/c5.jpg" class="carousel-img" alt="Foto5">
+          </div>
+          <div class="col-12 col-md-6 d-none d-md-flex justify-content-center">
+            <img src="./carpetaimg/c6.jpg" class="carousel-img" alt="Foto6">
+          </div>
         </div>
       </div>
-    </div>
+            <!-- Cuarto -->
+      <div class="carousel-item">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6 d-flex justify-content-center">
+            <img src="./carpetaimg/c7.jpg" class="carousel-img" alt="Foto5">
+          </div>
+          <div class="col-12 col-md-6 d-none d-md-flex justify-content-center">
+            <img src="https://placehold.co/646x862" class="carousel-img" alt="Foto6">
+          </div>
+        </div>
+      </div>
 
     <!-- Controles -->
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
@@ -134,30 +155,66 @@
       <span class="visually-hidden">Siguiente</span>
     </button>
   </div>
-  <br> <br>
-</section>
+</div>
+<!-- Carrousel castings celu version-->
+<div id="carouselMobile" class="carousel slide d-block d-md-none" data-bs-ride="carousel" data-bs-wrap="true">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="./carpetaimg/c1.jpg" class="d-block w-100" alt="Foto 1">
+    </div>
+    <div class="carousel-item">
+      <img src="./carpetaimg/c2.jpg" class="d-block w-100" alt="Foto 2">
+    </div>
+    <div class="carousel-item">
+      <img src="./carpetaimg/c3.jpg" class="d-block w-100" alt="Foto 3">
+    </div>
+    <div class="carousel-item">
+      <img src="./carpetaimg/c4.jpg" class="d-block w-100" alt="Foto 4">
+    </div>
+    <div class="carousel-item">
+      <img src="./carpetaimg/c5.jpg" class="d-block w-100" alt="Foto 5">
+    </div>
+    <div class="carousel-item">
+      <img src="./carpetaimg/c6.jpg" class="d-block w-100" alt="Foto 6">
+    </div>
+        <div class="carousel-item">
+      <img src="./carpetaimg/c7.jpg" class="d-block w-100" alt="Foto 6">
+    </div>
+  </div>
 
+  <!-- Controles para el celu -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselMobile" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselMobile" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Siguiente</span>
+  </button>
+</div>
+<br>
+<hr>
 <!--Secciones del body-->
 <!-- SOBRE MÍ -->
-<section id="sobre-mi" class="seccion-personalizada container py-5">
+<section id="sobre-mi" class="seccion-personalizada layout-responsive">
   <h2 class="titulo-seccion">Sobre mí</h2>
   <div class="row align-items-center">
     
     <!-- Imagen -->
-    <div class="col-md-4">
-      <img src="./carpetaimg/Paz4.jpg" alt="paz4" class="img-fluid imagen-lateral" id="paz4">
+    <div class="col-md-6 imagen-lateral">
+      <img src="./carpetaimg/paz4final.jpg" alt="paz4" class="img-fluid imagen-lateral" id="paz4">
     </div>
     
     <!-- Texto -->
-    <div class="col-md-8 texto-justificado">
+    <div class="col-md-6 texto-justificado">
       <p>
-             Soy fotógrafa desde hace 20 años, aunque mi historia con la fotografía comenzó casi por casualidad. Todo empezó con un curso que tomé por hobby, sin imaginar que me abriría las puertas a un nuevo camino profesional. Me enamoré del poder de la imagen y de todo lo que podía expresar a través de ella.
-            Desde entonces, nunca dejé de formarme. Seguí estudiando y explorando diferentes ramas de la fotografía. Me enfoqué principalmente en lifestyle, corporativa, moda, gastronomía, productos y arquitectura. Durante varios años también me dediqué a retratar familias, recién nacidos, bebés y niños, una etapa que me regaló experiencias que enriquecieron mi manera de contar con imágenes.
-            Hoy me dedico full time a crear contenido visual para Getty Images, donde tengo el privilegio de ser colaboradora exclusiva desde hace 18 años. Allí comparto parte de mi portfolio y realizo producciones a medida, buscando siempre responder con sensibilidad y creatividad a lo que cada cliente necesita.
-            Gracias por tomarte el tiempo de leer este breve resumen de mi historia profesional. Ojalá, a través de mis imágenes, pueda transmitirte todo lo que la fotografía significa para mí.
+            Soy fotógrafa desde hace 20 años, aunque mi historia con la fotografía comenzó casi por casualidad. Todo empezó con un curso que tomé por hobby, sin imaginar que me abriría las puertas a un nuevo camino profesional. Me enamoré del poder de la imagen y de todo lo que podía expresar a través de ella. <br> <br>
+            Desde entonces, nunca dejé de formarme. Seguí estudiando y explorando diferentes ramas de la fotografía. Me enfoqué principalmente en lifestyle, corporativa, moda, gastronomía, productos y arquitectura. Durante varios años también me dediqué a retratar familias, recién nacidos, bebés y niños, una etapa que me regaló experiencias que enriquecieron mi manera de contar con imágenes. <br> <br>
+            Hoy me dedico full time a crear contenido visual para Getty Images, donde tengo el privilegio de ser colaboradora exclusiva desde hace 16 años. Allí comparto parte de mi portfolio y realizo producciones a medida, buscando siempre responder con sensibilidad y creatividad a lo que cada cliente necesita. <br> <br>
+            Gracias por tomarte el tiempo de leer este breve resumen de mi historia profesional. Ojalá, a través de mis imágenes, pueda transmitirte todo lo que la fotografía significa para mí. <br> 
       </p>
       <p>
-        Paz Ruiz Luque
+        Paz
       </p>
     </div>
   </div>
@@ -166,27 +223,55 @@
       Contacto
     </a>
   </div>
+  <br>  
 </section>
 
-<!-- CONVERTITE EN MODELO -->
-<section id="convertite-modelo" class="container py-5">
-  <h2 class="titulo-seccion">Es tu momento, convertite en modelo</h2>
-  <div class="row align-items-center">
+
+<!-- BANCO DE IMÁGENES -->
+<section id="banco-imagenes" class="seccion-personalizada layout-responsive">
+  <h2 class="titulo-seccion">¿Qué es un banco de imágenes?</h2>
+  <div class="row">
+    
+    <!-- Imagen -->
+    <div class="col-md-6 imagen-lateral">
+      <img src="./carpetaimg/16.jpg" alt="planogeneral" class="img-fluid imagen-lateral">
+    </div>
     
     <!-- Texto -->
     <div class="col-md-6 texto-justificado">
       <p>
-          ¿Alguna vez pensaste en ser parte de una producción fotográfica? ¿Te animás a vivir una experiencia diferente?
-          Buscamos personas reales, auténticas, diversas para participar en producciones para Getty Images. No se requiere experiencia previa ni cumplir con un perfil específico; solo es necesario tener ganas de divertirse y disfrutar la experiencia. Pueden ser fotos individuales o familiares, con amigos y ¡hasta con tu mascota!  El material seleccionado te será entregado en alta calidad en formato digital, en un link que podrás descargar y compartir con quien quieras. Muchas personas ya vivieron esta experiencia y sus fotos forman parte de mi portfolio
-          Si tenés un emprendimiento, negocio, consultorio o una locación interesante, y necesitás contenido visual para tus redes, también podemos generar imágenes juntos mediante un intercambio: vos ofrecés el espacio y yo te entrego fotos profesionales que podrás usar libremente en tus redes o proyectos.
-          Sumarte a la base de datos es muy fácil: solo tenés que completar el formulario con tus datos y algunas fotos. 
-          Me encantaría contar con vos en una próxima producción.
-          ¡Gracias por acompañar esta mirada más inclusiva y real del mundo!
+        Un banco de imágenes es como una gran galería digital donde se almacenan fotografías, videos e ilustraciones, disponibles para que diseñadores, marcas o medios de comunicación los utilice en proyectos publicitarios, editoriales o creativos. <br> <br>
+        Getty Images es una plataforma internacional que impulsa una visión del mundo más inclusiva y representativa. Durante años, muchas personas no se vieron reflejadas en la publicidad. Por suerte, eso está cambiando: hoy son los propios clientes quienes buscan imágenes que representen la verdadera diversidad de nuestra sociedad. <br> <br> 
+        Por eso, buscamos incluir personas con distintos tipos de cuerpos, tonos de piel, edades, géneros, orientaciones sexuales, orígenes étnicos y discapacidades, para reflejar con autenticidad esa diversidad. <br> <br>
+        Nuestras producciones se caracterizan por ser cortas, naturales, de situaciones cotidianas, frescas y creíbles. <br> <br>
+        La credibilidad y confianza de Getty Images se basa en la autenticidad de su contenido. Por eso, no acepta imágenes creadas con inteligencia artificial.
+      </p>
+    </div>
+  </div>
+  <br>
+</section>
+
+
+
+<!-- CONVERTITE EN MODELO -->
+<section id="convertite-modelo" class="seccion-personalizada layout-responsive">
+  <h2 class="titulo-seccion">Es tu momento, convertite en modelo</h2>
+  <div class="row">
+    
+    <!-- Texto -->
+    <div class="col-md-6 texto-justificado">
+      <p>
+        ¿Alguna vez pensaste en ser parte de una producción fotográfica? ¿Te animás a vivir una experiencia diferente? <br> <br>
+        Buscamos personas reales, auténticas, diversas para participar en producciones para Getty Images. No se requiere experiencia previa ni cumplir con un perfil específico; solo es necesario tener ganas de divertirse y disfrutar la experiencia. Pueden ser fotos individuales o familiares, con amigos y ¡hasta con tu mascota! El material seleccionado te será entregado en alta calidad en formato digital, en un link que podrás descargar y compartir con quien quieras. Muchas personas ya vivieron esta experiencia y sus fotos forman parte de mi portfolio. <br> <br>
+        Si tenés un emprendimiento, negocio, consultorio o una locación interesante, y necesitás contenido visual para tus redes, también podemos generar imágenes juntos mediante un intercambio: vos ofrecés el espacio y yo te entrego fotos profesionales que podrás usar libremente en tus redes o proyectos. <br> <br>
+        Sumarte a la base de datos es muy fácil: solo tenés que completar el formulario con tus datos y algunas fotos. <br> <br>
+        Me encantaría contar con vos en una próxima producción. <br> <br>
+        ¡Gracias por acompañar esta mirada más inclusiva y real del mundo!
       </p>
     </div>
     
     <!-- Imagen -->
-    <div class="col-md-6 text-center">
+    <div class="col-md-6 imagen-lateral">
       <img src="./carpetaimg/12.jpg" alt="Modelo" class="img-fluid rounded imagen-lateral">
     </div>
   </div>
@@ -196,30 +281,10 @@
       Quiero convertirme en modelo
     </a>
   </div>
+  <br>
 </section>
 
-<!-- BANCO DE IMÁGENES -->
-<section id="banco-imagenes" class="seccion-personalizada container py-5">
-  <h2 class="titulo-seccion">¿Qué es un banco de imágenes?</h2>
-  <div class="row align-items-center">
-    
-    <!-- Imagen -->
-    <div class="col-md-6 text-center">
-      <img src="./carpetaimg/16.jpg" alt="planogeneral" class="img-fluid imagen-lateral">
-    </div>
-    
-    <!-- Texto -->
-    <div class="col-md-6 texto-justificado">
-      <p>
-        Un banco de imágenes es como una gran galería digital donde se almacenan fotografías, videos e ilustraciones, disponibles para que diseñadores, marcas o medios de comunicación los utilice en proyectos publicitarios, editoriales o creativos.
-        Getty Images es una plataforma internacional que impulsa una visión del mundo más inclusiva y representativa. Durante años, muchas personas no se vieron reflejadas en la publicidad. Por suerte, eso está cambiando: hoy son los propios clientes quienes buscan imágenes que representen la verdadera diversidad de nuestra sociedad.
-        Por eso, buscamos incluir personas con distintos tipos de cuerpos, tonos de piel, edades, géneros, orientaciones sexuales, orígenes étnicos y discapacidades, para reflejar con autenticidad esa diversidad.
-        Nuestras producciones se caracterizan por ser cortas, naturales, de situaciones cotidianas, frescas y creíbles.
-        La credibilidad y confianza de Getty Images se basa en la autenticidad de su contenido. Por eso, no acepta imágenes creadas con inteligencia artificial.
-      </p>
-    </div>
-  </div>
-</section>
+
 
 <!-- GALERÍA -->
 <section id="galeria-fotos" class="container py-5">

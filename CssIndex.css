@@ -1,28 +1,34 @@
 /* === GENERAL === */
 
-/* Aplica la fuente Nunito y color de fondo general */
+/* GLOBAL: Justifico y corrijo tamaño del texto */
+p {
+text-align: justify;
+font-size: 115%;
+}
+/* GLOBAL: Aplica la fuente Nunito y color de fondo general */
 body {
   font-family: 'Nunito', sans-serif;
   background-color: #EBDBC7;
 }
 
-/* Cada sección tiene una línea fina de separación abajo */
+/* GLOBAL: Cada sección tiene una línea fina de separación abajo */
 section {
-  border-bottom: 1px solid #EBDBC7;
+  border-bottom: 1px solid #3e3d3d;
 }
 
-/* Las imágenes nunca exceden el ancho de su contenedor, mantienen proporción */
+/* GLOBAL: las imágenes mantienen su proporción */
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* Logo con tamaño máximo de 200px en ancho */
+/* GLOBAL: tamaño maximo logos del header */
+/* Logo 1 */
 #logo {
   max-width: 200px;
 }
 
-/* Logo principal con tamaño máximo de 300px en ancho */
+/* Logo 2 */
 #logoprin {
   max-width: 300px;
 }
@@ -35,17 +41,12 @@ img {
 
 /* Secciones con un margen superior para separar del contenido anterior */
 .seccion-personalizada {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
-/* Imágenes laterales con bordes redondeados para un look más suave */
+/* GLOBAL: Imágenes laterales (del body) con bordes redondeados para un look más suave */
 .imagen-lateral {
   border-radius: 10px;
-}
-
-/* Imagen específica “paz4” con máximo ancho para que no crezca demasiado */
-#paz4 {
-  max-width: 360px;
 }
 
 /* Galería con flexbox para que las imágenes se ajusten y envuelvan */
@@ -58,14 +59,14 @@ img {
 /* Imágenes de galería con ancho máximo y padding para separación */
 #galeria-fotos img {
   width: 100%;
-  max-width: 300px;
-  padding: 10px;
+  max-width: 2000px;
+  padding: 20px;
 }
 
 /* Imágenes del carousel con máximo ancho y padding horizontal */
 .carousel-img {
   max-width: 40%;
-  padding: 0 10px;
+  padding: 0 1px;
 }
 
 /* Encabezado sin márgenes ni padding y con estilo oblicuo en fuente */
@@ -97,7 +98,7 @@ header {
   z-index: -1; /* Por debajo del contenido */
 }
 
-  /* Simulación simple de un placeholder móvil*/
+  /*GLOBAL: tuneo de falso placeholder lupita*/
 .placeholder-wrapper {
   position: relative;
   width: 100%;
@@ -120,6 +121,8 @@ header {
   animation: desplazamientoPlaceholder 10s linear infinite;
 }
 
+
+/* GLOBAL: animación falso placeholder lupita */
 @keyframes desplazamientoPlaceholder {
   0% {
     transform: translateX(100%);
@@ -129,14 +132,7 @@ header {
   }
 }
 
-/* Contenedor flexible centrado verticalmente y horizontalmente */
 
-
-/* Justifico y corrijo tamaño del texto */
-p {
-text-align: justify;
-font-size: 115%;
-}
 
 /* CELULAR */
 @media (max-width: 576px) {
@@ -157,54 +153,78 @@ font-size: 115%;
     padding-right: 0;
   }
 
-  /* Las imágenes del carousel aumentan su tamaño máximo para ocupar más espacio */
-  .carousel-img {
-    max-width: 80%;
-    margin: auto;
-  }
 
-  /* Margen inferior extra para que la imagen #paz4 no quede muy pegada al siguiente contenido */
-  #paz4 {
-    margin-bottom: 20px;
-  }
-  #galeria-fotos img{
+  #galeria-fotos img {
+    width: 100%;
     max-width: 50%;
+    padding: 20px;
   }
 }
 
 
 
+/* Estilizo las flechas del carrousel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none;
+  background-color: #dc3545; 
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+}
+
 /* COMPU */
-@media (min-width: 768px) {
-  /* En pantallas grandes aumenta el padding lateral del texto para más espacio */
-  .texto-justificado {
-    padding-left: 40px;
-    padding-right: 20px;
-  }
 
-  /* Contenedor flexible cambia a fila y centra horizontalmente (para botón y más) */
-  .contenedor-flex {
+@media (min-width: 576px) {
+  .layout-responsive .row {
     display: flex;
-    flex-direction: row; /* Dos columnas lado a lado */
-    align-items: flex-start; /* Alinea el contenido de ambas al tope (mismo eje Y) */
-    justify-content: center; /* Centra horizontalmente */
-    gap: 20px; /* Espacio entre columnas */
-    margin-top: 20px;
+    flex-direction: row;
+    align-items: flex-start !important;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 10px;
   }
 
-  /* Añade padding a la izquierda en columnas para separación en pantallas grandes */
-  .col-md-6 {
-    padding-left: 10px;
+  .layout-responsive .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    box-sizing: border-box;
+    padding-left: 4%;
+    padding-right: 4%;
+    margin: 0;
   }
 
+
+  .layout-responsive .imagen-lateral img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Imágenes laterales con bordes redondeados para un look más suave */
+    border-radius: 10px;
+  }
+
+  .layout-responsive .contenedor-flex {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
   /* Mantiene tamaño máximo para imágenes de carousel */
   .carousel-img {
-    max-width: 40%;
-  }
+    display: inline-block;
+    max-width: 90%;
+    padding: 0 1px;}
 
   /* Las imágenes en galería pueden ser un poco más chicas para acomodar más en fila */
   #galeria-fotos img {
+    width: 100%;
     max-width: 30%;
+    padding: 20px;
   }
-}
 
+}
