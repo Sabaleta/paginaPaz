@@ -3,7 +3,7 @@ textarea {width: 100%; max-width: 600px;}
 /* Importo font nunito */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
 
-/* Reset */
+/* Reseteo letra, formato, etc*/
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,7 +12,7 @@ textarea {width: 100%; max-width: 600px;}
 }
 
 body {
-  background-color: #EBDBC7;
+  background-color: white;
   padding: 20px;
   color: #333;
   font-size: 18px;
@@ -35,8 +35,8 @@ input[type="text"], select {
 
 input[type="text"]:focus, select:focus {
   outline: none;
-  border-color: #DBC7AD;
-  box-shadow: 0 0 6px #DBC7AD;
+  border-color: #484747;
+  box-shadow: 0 0 6px #454342;
 }
 
 /* Tabla */
@@ -44,16 +44,16 @@ p {
   text-align: center;
   width: 100%;
   border-collapse: collapse;
-  background-color: #DBC7AD;
+  background-color: #fff;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 0 15px #EBDBC7;
+  box-shadow: 0 0 15px lightslategray;
   margin-top: 20px;
 }
 
 #comentarioint { text-align: center;
 }
-/* Responsive */
+/* Responsive muy básico*/
 @media (max-width: 768px) {
   table, thead, tbody, th, td, tr {
     font-size: 14px;

@@ -10,7 +10,7 @@
 }
 
 body {
-  background-color: #EBDBC7;
+  background-color: #fff;
   padding: 20px;
   color: #333;
   font-size: 18px;
@@ -37,15 +37,16 @@ input[type="text"], select {
   transition: border-color 0.3s ease;
 }
 
+
 input[type="text"]:focus, select:focus {
   outline: none;
-  border-color: #DBC7AD;
-  box-shadow: 0 0 6px #DBC7AD;
+  border-color: #484747;
+  box-shadow: 0 0 6px #454342;
 }
 
 /* Botón de búsqueda */
 button.lupa {
-  background-color: #DBC7AD;
+  background-color: lightslategray;
   color: white;
   font-weight: 700;
   padding: 10px 20px;
@@ -58,7 +59,7 @@ button.lupa {
 }
 
 button.lupa:hover {
-  background-color: #EBDBC7;
+  background-color: lightslategray;
   color: black;
 }
 
@@ -74,7 +75,7 @@ table {
 }
 
 thead {
-  background-color: #DBC7AD;
+  background-color: lightslategray;
   color: white;
 }
 
@@ -90,7 +91,7 @@ img {
 
 /* Botones dentro de la tabla */
 table button {
-  background-color: #DBC7AD;
+  background-color: lightslategray;
   color: white;
   font-weight: 600;
   padding: 6px 12px;
@@ -103,7 +104,7 @@ table button {
 }
 
 table button:hover {
-  background-color: #EBDBC7;
+  background-color: lightslategray;
   color: black;
 }
 
